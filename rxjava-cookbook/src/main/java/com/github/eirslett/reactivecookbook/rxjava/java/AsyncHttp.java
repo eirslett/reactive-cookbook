@@ -6,10 +6,8 @@ import org.apache.http.nio.client.methods.HttpAsyncMethods;
 
 public class AsyncHttpJava {
 
-  public Observable<String> getBody(String url) {
-    CloseableAsyncHttpClient client = HttpAsyncClients.createDefault();
-    client.start();
-    return ObservableHttp.createREquest(HttpAsyncMethods.createGet(url, httpClient)
+  public Observable<String> getBody(String url, HttpAsyncClient client) {
+    return ObservableHttp.createRequest(HttpAsyncMethods.createGet(url, httpClient)
           .toObservable()
           .flatMap((r) -> {
             r.getContent().map(String::new)
@@ -17,6 +15,8 @@ public class AsyncHttpJava {
   }
   
   public static void main(String... args) {
-    getBody("http://www.wikipedia.com").subscribe((body) -> System.out.println(body));
+    HttpAsyncClient client = HttpAsyncClients.createDefault();
+    client.start();
+    getBody("http://www.wikipedia.com", client).subscribe((body) -> System.out.println(body), () -> {}, () -> client.close());
   }
 }
