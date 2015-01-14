@@ -17,7 +17,7 @@
         <dependency>
             <groupId>io.reactivex</groupId>
             <artifactId>rxapache-http</artifactId>
-            <version>0.21</version>
+            <version>0.21.0</version>
         </dependency>
     </dependencies>
 </project>
