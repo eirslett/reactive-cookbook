@@ -14,5 +14,10 @@
             <artifactId>rxjava</artifactId>
             <version>1.0.4</version>
         </dependency>
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxapache-http</artifactId>
+            <version>0.21</version>
+        </dependency>
     </dependencies>
 </project>
